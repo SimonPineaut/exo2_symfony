@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Site index
+{% endblock %}
+
+{% block body %}
+	<h1>Sites</h1>
+	<div class="row text-center">
+		{% for site in sites %}
+			<div class="col-sm-3 m-2">
+				<div class="card" style="width: 18rem;">
+					<img src="{{ asset('uploads/' ~ site.photos) }}" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title">{{site.name}}</h5>
+						<p class="card-text">{{site.description}}</p>
+						<a href="{{ path('app_site_show', {'id': site.id}) }}" class="btn btn-primary">show</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+
+	{% if app.user %}
+		<a class="btn btn-secondary m-3" href="{{ path('app_site_new') }}">Create new site</a>
+	{% endif %}
+{% endblock %}

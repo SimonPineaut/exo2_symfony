@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My sites
+{% endblock %}
+
+{% block body %}
+	<h1>Site index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>X</th>
+				<th>Y</th>
+				<th>Photos</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for site in sites %}
+				<tr>
+					<td>{{ site.id }}</td>
+					<td>{{ site.name }}</td>
+					<td>{{ site.description }}</td>
+					<td>{{ site.x }}</td>
+					<td>{{ site.y }}</td>
+					<td>{{ site.photos ? site.photos|join(', ') : '' }}</td>
+					<td>
+						<a href="{{ path('app_site_show', {'id': site.id}) }}">show</a>
+						{% if app.user %}
+							<a href="{{ path('app_site_edit', {'id': site.id}) }}">edit</a>
+						{% endif %}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if app.user %}
+		<a href="{{ path('app_site_new') }}">Create new site</a>
+	{% endif %}
+{% endblock %}

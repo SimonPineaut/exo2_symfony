@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<style>
+		#map {
+			height: 180px;
+		}
+	</style>
+{% endblock %}
+
+{% block title %}Site
+{% endblock %}
+
+{% block body %}
+	<h1>Site</h1>
+	<div class="row text-center">
+		<div class="col-sm-3 m-2">
+			<div class="card" style="width: 18rem;">
+				<img src="{{ asset('uploads/' ~ site.photos) }}" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">{{site.name}}</h5>
+					<p class="card-text">{{site.description}}</p>
+					<p class="card-text">x:
+						{{site.x}}</p>
+					<p class="card-text">y:
+						{{site.y}}</p>
+					<a href="{{ path('app_site_edit', {'id': site.id}) }}" class="btn btn-primary">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="map"></div>
+
+
+	{% if app.user %}
+		<a class="btn btn-primary" href="{{ path('app_site_new') }}">Create new site</a>
+	{% endif %}
+{% endblock %}
