@@ -24,7 +24,9 @@
 						{{site.x}}</p>
 					<p class="card-text">y:
 						{{site.y}}</p>
-					<a href="{{ path('app_site_edit', {'id': site.id}) }}" class="btn btn-primary">Edit</a>
+					{% if app.user %}
+						<a href="{{ path('app_site_edit', {'id': site.id}) }}" class="btn btn-primary">Edit</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>
