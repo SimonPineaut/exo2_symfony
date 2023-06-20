@@ -1,0 +1,17 @@
+@import "~bootstrap";
+
+.dropdown {
+    width: 100%;
+    padding: 0;
+}
+
+.dropdown-item {
+    text-align: center;
+    background-color: lightgray;
+
+    &:hover {
+        cursor: pointer;
+        color: rgb(243, 237, 237);
+        background-color: rgb(66, 58, 58);
+    }
+}
