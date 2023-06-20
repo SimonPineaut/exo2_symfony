@@ -5,6 +5,8 @@ export default class extends Controller {
 
     fetchData(event) {
         let inputValue = event.target.value;
+        inputValue === '' ? this.resultsTarget.classList.add('d-none') : this.resultsTarget.classList.remove('d-none');
+
         fetch('/search?keywords=' + inputValue)
             .then(response => response.json())
             .then(data => {
@@ -20,7 +22,7 @@ export default class extends Controller {
                 });
             })
             .catch(error => {
-                console.error('Erreur lors du chargement des sites:', error);
+                console.error('Erreur lors du chargement du choix de sites:', error);
             });
     }
 }

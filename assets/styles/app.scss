@@ -1,5 +1,10 @@
 @import "~bootstrap";
 
+.dropdown-container {
+    max-height: 50px;
+    overflow-y: visible;
+}
+
 .dropdown {
     width: 100%;
     padding: 0;
