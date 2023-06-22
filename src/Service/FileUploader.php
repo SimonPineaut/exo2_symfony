@@ -19,7 +19,7 @@ class FileUploader
 
     public function upload(UploadedFile $file, string $subFolder = '')
     {
-        $directory = $this->targetDirectory .= '/' . $subFolder;
+        $directory = $this->targetDirectory . '/' . $subFolder;
 
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
