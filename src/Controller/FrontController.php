@@ -36,7 +36,6 @@ class FrontController extends AbstractController
     public function search(Request $request, PlaceRepository $placeRepository): Response
     {
         $keywords = $request->query->get('keywords');
-        dump($keywords);
         $placesSearched = $placeRepository->searchByKeywords($keywords);
 
         return $this->json($placesSearched);

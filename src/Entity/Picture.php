@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PictureRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[ORM\Entity(repositoryClass: PictureRepository::class)]
 class Picture
@@ -23,6 +24,9 @@ class Picture
     #[ORM\Column(length: 255)]
     #[Groups(['search'])]
     private ?string $file = null;
+
+    // non mappé ORM
+    private UploadedFile $pictureFile;
 
     #[ORM\Column]
     #[Groups(['search'])]
@@ -98,6 +102,18 @@ class Picture
     public function setPlace(?Place $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    public function getPictureFile(): UploadedFile
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(UploadedFile $pictureFile): self
+    {
+        $this->pictureFile = $pictureFile;
 
         return $this;
     }

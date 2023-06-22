@@ -17,7 +17,9 @@ const clickDelete = function () {
 }
 
 
-deleteButtons.forEach(deleteButton=>{
-    deleteButton.addEventListener('click',clickDelete)
+deleteButtons.forEach(deleteButton => {
+    deleteButton.addEventListener('click', clickDelete)
 })
 
+let addPictureBtn = document.querySelector('#add-picture-btn')
+console.log(addPictureBtn);

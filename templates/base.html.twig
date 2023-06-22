@@ -61,8 +61,14 @@
 				</div>
 			</div>
 		</nav>
-		<main class="container-fluid"> {% block body %}{% endblock %}
-			</main>
-		</body>
-	</html>
-</body></html>
+		<main class="container-fluid">
+			{% block body %}
+				{% for message in app.flashes('success') %}
+					<div class="alert alert-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endblock %}
+		</main>
+	</body>
+</html></body></html>

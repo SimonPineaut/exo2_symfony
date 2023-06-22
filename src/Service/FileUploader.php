@@ -19,14 +19,14 @@ class FileUploader
 
     public function upload(UploadedFile $file, string $subFolder = '')
     {
-        $this->targetDirectory .= '/' . $subFolder;
+        $directory = $this->targetDirectory .= '/' . $subFolder;
 
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
         $fileName = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
 
         try {
-            $file->move($this->getTargetDirectory(), $fileName);
+            $file->move($directory, $fileName);
         } catch (FileException $e) {
             $fileName = null;
         }

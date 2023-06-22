@@ -52,7 +52,7 @@ class Place
     #[Ignore]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'place', targetEntity: Picture::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'place', targetEntity: Picture::class, cascade: ['persist'], orphanRemoval: true)]
     #[Ignore]
     private Collection $pictures;
 

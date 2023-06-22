@@ -43,9 +43,7 @@ class PlaceRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p')
             ->leftJoin('p.pictures', 'pi')
-            ->orWhere('pi.title like :keywords')
-            ->orWhere('p.name like :keywords')
-            ->orWhere('p.description like :keywords')
+            ->where('p.name LIKE :keywords OR p.description LIKE :keywords OR pi.title LIKE :keywords')
             ->setParameter('keywords', '%' . $keywords . '%');
 
         return $qb->getQuery()->getResult();

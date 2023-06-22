@@ -40,9 +40,7 @@ class PictureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $pictureFile = $form->get('pictureFile')->getData();
-
+            $pictureFile = $form->get('file')->getData();
 
             if ($pictureFile) {
                 $file = $fileUploader->upload($pictureFile, 'place');

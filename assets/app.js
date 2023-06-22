@@ -13,3 +13,5 @@ import './bootstrap';
 
 // Chargement du Js de Boostrap
 import 'bootstrap';
+
+import './js/form'
